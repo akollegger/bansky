@@ -1,8 +1,7 @@
 Speak softly, but carry a big can of paint
 ==========================================
 
-Bansky is a Neo4j database server, using [spray-can](http://spray.cc) to server a single Cypher endpoint.
-
+Bansky is a Neo4j database server, using [spray-can](http://spray.cc) to offer up a single Cypher endpoint.
 
 # Dependencies
 
