@@ -24,15 +24,15 @@ Clone this repository, then run the application in one of the following ways.
 
 # Shake up some Cypher queries
 
-- Interactively
+- Interactively (producing human friendly results)
 
     $ ./bin/cypher
 
-- One-liners
+- One-liners (also human friendly)
 
     $ ./bin/cypher 'start n=node(*) return n'
 
-- Redirect entire scripts
+- Redirect entire scripts (piped input produces json output)
 
     $ ./bin/cypher < cql/all.cql
  
