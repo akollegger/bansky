@@ -6,3 +6,4 @@ project/plugins/target
 .idea_modules
 *~
 *.swp
+*.graphdb
