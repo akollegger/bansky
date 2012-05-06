@@ -37,5 +37,19 @@ Clone this repository, then run the application in one of the following ways.
  
 - Pipe to [jgrep](http://jgrep.org/) or (jsawk)[https://github.com/micha/jsawk]
 
-    # cat cql/all.sql | ./bin/cypher | jgrep
+    % cat cql/all.cql | ./bin/cypher| jgrep                        
+    [
+      {
+        "n": {
+          "id": 0
+      }
+      },
+      {
+        "n": {
+          "id": 1,
+          "name": "Andreas"
+        }
+      }
+    ]
+
 
