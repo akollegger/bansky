@@ -35,3 +35,7 @@ Clone this repository, then run the application in one of the following ways.
 
     $ ./bin/cypher < cql/all.cql
  
+- Pipe to [jgrep](http://jgrep.org/) or (jsawk)[https://github.com/micha/jsawk]
+
+    # cat cql/all.sql | ./bin/cypher | jgrep
+
