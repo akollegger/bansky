@@ -3,11 +3,11 @@ Speak softly, but carry a big can of paint
 
 Bansky is a Neo4j database server, using [spray-can](http://spray.cc) to offer up a single Cypher endpoint.
 
-# Dependencies
+## Dependencies
 
 - Requires sbt 0.11.1 to build.
 
-# How to run
+## How to run
 
 Clone this repository, then run the application in one of the following ways.
 
@@ -21,7 +21,7 @@ Clone this repository, then run the application in one of the following ways.
         ...
         $ foreman start
 
-# Shake up some Cypher queries
+## Shake up some Cypher queries
 
 - Interactively (producing human friendly results)
 
@@ -35,21 +35,21 @@ Clone this repository, then run the application in one of the following ways.
 
     $ ./bin/cypher < cql/all.cql
  
-- Pipe to [jgrep](http://jgrep.org/) or (jsawk)[https://github.com/micha/jsawk]
+- Pipe to [jgrep](http://jgrep.org/) or [jsawk](https://github.com/micha/jsawk)
 
-    % cat cql/all.cql | ./bin/cypher| jgrep                        
-    [
-      {
-        "n": {
-          "id": 0
-      }
-      },
-      {
-        "n": {
-          "id": 1,
-          "name": "Andreas"
-        }
-      }
-    ]
+        % cat cql/all.cql | ./bin/cypher | jgrep                        
+        [
+          {
+            "n": {
+              "id": 0
+          }
+          },
+          {
+            "n": {
+              "id": 1,
+              "name": "Andreas"
+            }
+          }
+        ]
 
 
