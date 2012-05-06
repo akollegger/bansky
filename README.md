@@ -25,15 +25,15 @@ Clone this repository, then run the application in one of the following ways.
 
 - Interactively (producing human friendly results)
 
-    $ ./bin/cypher
+        $ ./bin/cypher
 
 - One-liners (also human friendly)
 
-    $ ./bin/cypher 'start n=node(*) return n'
+        $ ./bin/cypher 'start n=node(*) return n'
 
 - Redirect entire scripts (piped input produces json output)
 
-    $ ./bin/cypher < cql/all.cql
+        $ ./bin/cypher < cql/all.cql
  
 - Pipe to [jgrep](http://jgrep.org/) or [jsawk](https://github.com/micha/jsawk)
 
