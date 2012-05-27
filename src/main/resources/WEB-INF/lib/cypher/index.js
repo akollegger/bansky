@@ -13,7 +13,6 @@ define(function(require, exports, module) {
 
   require('cypher/commands/intro').startup();
   require('cypher/commands/basic').startup();
-  require('cypher/commands/bugs').startup();
-  require('cypher/commands/cypher').startup();
+  require('cypher/commands/start').startup();
 
 });

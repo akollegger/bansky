@@ -70,7 +70,7 @@ exports.buildNeo = function() {
   if (project.getDependencyGraphML) {
     copy({
       source: { value:project.getDependencyGraphML() },
-      dest: 'built/gcli.graphml'
+      dest: 'built/neo4j-gcli.graphml'
     });
   }
 
@@ -79,18 +79,18 @@ exports.buildNeo = function() {
   copy({ source: 'scripts/es5-shim.js', dest: 'built/es5-shim.js' });
   copy({
     source: [ copy.getMiniRequire(), sources ],
-    dest: 'built/gcli-uncompressed.js'
+    dest: 'built/neo4j-gcli-uncompressed.js'
   });
   try {
     copy({
       source: [ copy.getMiniRequire(), sources ],
       filter: copy.filter.uglifyjs,
-      dest: 'built/gcli.js'
+      dest: 'built/neo4j-gcli.js'
     });
   }
   catch (ex) {
     log += 'ERROR: Uglify compression fails on windows/linux. ' +
-        'Skipping creation of built/gcli.js\n';
+        'Skipping creation of built/neo4j-gcli.js\n';
   }
   return log;
 };

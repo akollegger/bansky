@@ -25,7 +25,7 @@ object Boot extends App {
   val host = "0.0.0.0"
   val port = Option(System.getenv("PORT")).getOrElse("5000").toInt
 
-  val httpService    = actorOf(new HttpService(mainModule.discoService))
+  val httpService    = actorOf(new HttpService(mainModule.banskyService))
   val rootService    = actorOf(new SprayCanRootService(httpService))
   val sprayCanServer = actorOf(new HttpServer(new ServerConfig(host = host, port = port)))
 

@@ -14,7 +14,7 @@ trait BanskyService extends Directives with CypherResultMarshallers {
 
   lazy val cypher = new ExecutionEngine(neo4j)
 
-  val discoService = {
+  val banskyService = {
     path("shutdown") {
       (post | parameter('method ! "post")) {
         ctx =>
