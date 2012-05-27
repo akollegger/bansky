@@ -10,7 +10,7 @@ define(function(require, exports, module) {
   var gcli = require('gcli/index');
   var util = require('gcli/util');
 
-  var cypherHtml = require('text!cypher/commands/cypher.html');
+  var cypherHtml = require('text!cypher/commands/cypher-table.html');
 
   var cypherUrlSettingSpec = {
     name: 'cypherUrl',
@@ -54,10 +54,13 @@ var cypherStartcCommandSpec = {
 
     var query = "START " + args.query;
 
-    queryCypher(query, function(text) {
+    queryCypher(query, function(json) {
       promise.resolve(context.createView({
         html: cypherHtml,
-        data: { "text": text }
+        data: { "rows": json },
+        options: { allowEval:true },
+        css: require('text!cypher/commands/cypher_result.css'),
+        cssId: 'cypher-result-table'
       }));
     }, onFailure);
 
@@ -70,7 +73,7 @@ function queryCypher(query, onSuccess, onFailure) {
 
   var req = new XMLHttpRequest();
   req.open('POST', url, true);
-  req.setRequestHeader('Accept', 'text/plain');
+  req.setRequestHeader('Accept', 'application/json');
   req.setRequestHeader('Content-type', 'text/plain');
   req.onreadystatechange = function(event) {
     if (req.readyState == 4) {
@@ -78,7 +81,23 @@ function queryCypher(query, onSuccess, onFailure) {
         onFailure('Error: ' + JSON.stringify(req));
         return;
       }
-      onSuccess(req.responseText);
+
+      var json;
+      try {
+        json = JSON.parse(req.responseText);
+      }
+      catch (ex) {
+        onFailure('Invalid response: ' + ex + ': ' + req.responseText);
+        return;
+      }
+
+      if (json.error) {
+        onFailure('Error: ' + json.error.message);
+        return;
+      }
+
+      onSuccess(json);
+
     }
   }.bind(this);
   req.send(query);

@@ -42,6 +42,7 @@
     require([ 'gcli/index', 'cypher/index' ], function(gcli) {
       settings = require('gcli/settings');
       settings.getAll('hideIntro')[0].value = true;
+      settings.getAll('cypherUrl')[0].value = "http://localhost:5000/cypher"
       gcli.createDisplay();
     });
   </script>
