@@ -35,6 +35,7 @@ object Dependencies {
   val resolutionRepos = Seq(
     "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
     "Spray Repository" at "http://repo.spray.cc",
+    "Neo4j Snapshots" at "http://m2.neo4j.org/content/repositories/snapshots",
     ScalaToolsSnapshots
   )
 
@@ -48,7 +49,7 @@ object Dependencies {
     val specs2    = "1.6.1"
     val slf4j     = "1.6.1"
     val logback   = "0.9.29"
-    val neo4j     = "1.8.M01"
+    val neo4j     = "1.8.M03"
   }
 
   object Compile {

@@ -1,6 +1,7 @@
 #!/bin/sh
 
 
+#REST_URL=http://bansky-server.herokuapp.com/
 REST_URL=http://localhost:5000/
 CYPHER_URL=${REST_URL}cypher
 ACCEPT_TYPE="application/json"
