@@ -1,5 +1,7 @@
 #!/bin/sh
 
+CYPHER_HISTORY="${HOME}/.cypher_history"
+history -r ${CYPHER_HISTORY}
 
 #REST_URL=http://bansky-server.herokuapp.com/
 REST_URL=http://localhost:5000/
@@ -19,11 +21,11 @@ if [ "$1" != "" ]; then
   cypher "$1"
 elif [[ -t 0 ]]; then
   CURL_OPTS="${CURL_OPTS} --header Accept:text/plain"
-  printf "$CYPHER_PROMPT"
-  while read line; do
+  while read -e -p "$CYPHER_PROMPT" line; do
+    history -s "$line"
     cypher "$line"
-    printf "$CYPHER_PROMPT"
   done
+  history -w ${CYPHER_HISTORY}
   exit 0
 else
   CURL_OPTS="${CURL_OPTS} --header Accept:application/json"
