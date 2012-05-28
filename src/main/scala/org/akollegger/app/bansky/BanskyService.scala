@@ -1,12 +1,13 @@
 package org.akollegger.app.bansky
 
-import cc.spray.Directives
 import cc.spray.http.MediaTypes._
 
 import akka.actor.{PoisonPill, Actor, Scheduler}
 import java.util.concurrent.TimeUnit
 import org.neo4j.graphdb.GraphDatabaseService
 import org.neo4j.cypher.ExecutionEngine
+import cc.spray.{ValidationRejection, Directives}
+import cc.spray.http.{StatusCode, StatusCodes, HttpResponse}
 
 trait BanskyService extends Directives with CypherResultMarshallers {
 
@@ -32,7 +33,7 @@ trait BanskyService extends Directives with CypherResultMarshallers {
                     val cypherResult= cypher.execute(cql)
                     completeWith(cypherResult)
                   } catch {
-                    case e: Exception => completeWith(e.getMessage)
+                    case e: Exception =>  completeWith(HttpResponse(StatusCodes.BadRequest, e.getMessage))
                   }
               }
           }

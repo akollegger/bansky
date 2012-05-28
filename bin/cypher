@@ -7,9 +7,9 @@ history -r ${CYPHER_HISTORY}
 REST_URL=http://localhost:5000/
 CYPHER_URL=${REST_URL}cypher
 ACCEPT_TYPE="application/json"
-CURL_OPTS="--fail --silent"
+CURL_OPTS="--fail --verbose"
 
-CYPHER_PROMPT='(cypher)--> '
+CYPHER_PROMPT='--> '
 
 cypher() {
   curl ${CURL_OPTS} --data "$1" ${CYPHER_URL} 
