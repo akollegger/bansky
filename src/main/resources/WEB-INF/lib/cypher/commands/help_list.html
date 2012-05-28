@@ -1,0 +1,26 @@
+
+<div>
+  <div if="${includeIntro}">
+    <h2>Cypher REPL</h2>
+    <p>An experimental GCLI-based shell for querying Neo4j with Cypher.</p>
+    <p>
+      Useful links:
+      <a target='_blank' href='http://neo4j.org'>Neo4j</a>,
+      <a target='_blank' href='http://docs.neo4j.org/chunked/1.8.M03/cypher-query-lang.html'>Cypher Query Language</a>
+    </p>
+  </div>
+
+  <h3>${getHeading()}</h3>
+
+  <table>
+    <tr foreach="command in ${getMatchingCommands()}"
+        onclick="${onclick}" ondblclick="${ondblclick}">
+      <th class="gcli-help-name">${command.name}</th>
+      <td class="gcli-help-arrow">&#x2192;</td>
+      <td>
+        ${command.description}
+        <span class="gcli-out-shortcut gcli-help-command">help ${command.name}</span>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,57 @@
+
+<div>
+  <h3>${command.name}</h3>
+
+  <h4 class="gcli-help-header">
+    ${l10n.helpManSynopsis}:
+    <span class="gcli-help-synopsis" onclick="${onclick}">
+      <span class="gcli-help-command">${command.name}</span>
+      <span foreach="param in ${command.params}">
+        ${param.defaultValue !== undefined ? '[' + param.name + ']' : param.name}
+      </span>
+    </span>
+  </h4>
+
+  <h4 class="gcli-help-header">${l10n.helpManDescription}:</h4>
+
+  <p class="gcli-help-description">
+    ${command.manual || command.description}
+  </p>
+
+  <div if="${command.exec}">
+    <h4 class="gcli-help-header">${l10n.helpManParameters}:</h4>
+
+    <ul class="gcli-help-parameter">
+      <li if="${command.params.length === 0}">${l10n.helpManNone}</li>
+      <li foreach="param in ${command.params}">
+        <tt>${param.name}</tt> ${getTypeDescription(param)}
+        <br/>
+        ${param.manual || param.description}
+      </li>
+    </ul>
+  </div>
+
+  <div if="${!command.exec}">
+    <h4 class="gcli-help-header">${l10n.subCommands}:</h4>
+
+    <ul class="gcli-help-${subcommands}">
+      <li if="${subcommands.length === 0}">${l10n.subcommandsNone}</li>
+      <li foreach="subcommand in ${subcommands}">
+        <strong>${subcommand.name}</strong>:
+        ${subcommand.description}
+        <span class="gcli-help-synopsis" onclick="${onclick}" ondblclick="${ondblclick}">
+          <span class="gcli-help-command">help ${subcommand.name}</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <h4 if="${command.examples}" class="gcli-help-header">Examples:</h4>
+
+  <ol if="${command.examples}">
+    <li foreach="example in ${command.examples}">${example.description}
+      <pre>${example.example}</pre>
+    </li>
+  </ol>
+
+</div>
