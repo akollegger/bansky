@@ -1,0 +1,28 @@
+table.cypher-result
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #69c;
+}
+table.cypher-result th
+{
+	padding: 12px 17px 12px 17px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #039;
+	border-bottom: 1px dashed #69c;
+}
+table.cypher-result td
+{
+	padding: 7px 17px 7px 17px;
+	color: #669;
+}
+table.cypher-result tbody tr:hover
+{
+	color: #339;
+	background: #aadbe9;
+}

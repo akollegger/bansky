@@ -1,0 +1,18 @@
+
+<div>
+  <table class="cypher-result">
+    <thead>
+      <tr>
+        <th foreach="cell in ${result[0]}">
+          ${cell}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr foreach="row in ${result}">
+        <td foreach="col in ${row}">${JSON.stringify(row[col])}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

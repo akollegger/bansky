@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="author" content="Joe Walker">
-  <title>GCLI: Graphical Command Line</title>
+  <title>Cypher REPL</title>
   <style type="text/css" media="screen">
     body {
       width: 100%; height: 100%; overflow: hidden;
@@ -33,15 +33,20 @@
       packagePaths: {
         "lib": [
           { name: "gcli", main: "index", lib: "." },
-          { name: "test", main: "index", lib: "." },
-          { name: "gclitest", main: "index", lib: "." },
-          { name: "demo", main: "index", lib: "." }
+          { name: "neo4j", main: "index", lib: "." },
+          { name: "koans", main: "index", lib: "." }
         ]
       }
     });
 
     // dependencies should be reflected in lib/server/build.js:buildStandard
-    require([ 'gcli/index', 'demo/index' ], function(gcli) {
+    require([ 'gcli/index', 'neo4j/index', 'koans/index' ], function(gcli) {
+      settings = require('gcli/settings');
+      settings.getAll('hideIntro')[0].value = true;
+      settings.getAll('cypherUrl')[0].value = "http://localhost:5000/cypher"
+      settings.getAll('cypherPostType')[0].value = "text/plain"
+      // settings.getAll('cypherUrl')[0].value = "http://localhost:7474/db/data/cypher"
+      // settings.getAll('cypherPostType')[0].value = "application/json"
       gcli.createDisplay();
     });
   </script>

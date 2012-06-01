@@ -5,14 +5,16 @@ history -r ${CYPHER_HISTORY}
 
 #REST_URL=http://bansky-server.herokuapp.com/
 REST_URL=http://localhost:5000/
+#REST_URL=http://localhost:7474/db/data/cypher
 CYPHER_URL=${REST_URL}cypher
 ACCEPT_TYPE="application/json"
-CURL_OPTS="--fail --verbose"
+CURL_OPTS="--fail --silent"
 
 CYPHER_PROMPT='--> '
 
 cypher() {
-  curl ${CURL_OPTS} --data "$1" ${CYPHER_URL} 
+  cql="$1"
+  curl ${CURL_OPTS} --data "${cql}" ${CYPHER_URL} 
   if [ ! $? ]; then echo "Failed"; exit 1; fi
 }
 

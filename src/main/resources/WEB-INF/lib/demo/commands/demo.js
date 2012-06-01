@@ -36,7 +36,7 @@ exports.shutdown = function() {
  */
 var gcliTop = {
   name: 'gcli',
-  description: 'Demo commands for playing with the UI'
+  description: 'Commands for playing with the UI'
 };
 
 
@@ -45,13 +45,13 @@ var gcliTop = {
  */
 var gcliOnestring = {
   name: 'gcli onestring',
-  description: 'Single string parameter, demo',
+  description: 'Single string parameter',
   params: [
     { name: 'text', type: 'string', description: 'Demo param' }
   ],
   returnType: 'html',
   exec: function(args, context) {
-    return motivate() + 'demo text=' + args.text;
+    return motivate() + 'text=' + args.text;
   }
 };
 

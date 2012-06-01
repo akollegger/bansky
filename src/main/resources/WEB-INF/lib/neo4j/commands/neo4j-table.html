@@ -1,0 +1,21 @@
+
+<div>
+  <table class="cypher-result">
+    <thead>
+      <tr>
+        <th foreach="col in ${result.columns}">
+          ${col}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr foreach="row in ${result.data}">
+        <td foreach="datacol in ${row}">
+          <span if="${datacol.data}">${JSON.stringify(datacol.self).replace(/http.*node\//,"Node ")} ${JSON.stringify(datacol.data)}</span>
+          <span if='${typeof datacol=="string"}'>${datacol}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
