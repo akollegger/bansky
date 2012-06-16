@@ -16,12 +16,24 @@ define(function(require, exports, module) {
   require('neo4j/commands/where').startup();
   require('neo4j/commands/create').startup();
   require('neo4j/commands/relate').startup();
+  var canon = require('gcli/canon');
+
+  canon.commandOutputManager.onOutput.add(function(ev) {
+    console.log('output has changed');
+  });
 
   help.helpManHtml = require('text!neo4j/commands/help_man.html');
   help.helpListHtml = require('text!neo4j/commands/help_list.html');
   help.helpCss = require('text!neo4j/commands/help.css');
 
-  var cypherHtml = require('text!neo4j/commands/cypher-table.html');
+  var cypherHtmlSettingSpec = {
+    name: 'cypherHtml',
+    type: 'html',
+    description: 'HTML snippet to display cypher query result',
+    defaultValue: require('text!neo4j/commands/cypher-table.html')
+  };
+
+  var cypherHtml =  settings.addSetting(cypherHtmlSettingSpec);
 
   var cypherUrlSettingSpec = {
     name: 'cypherUrl',
@@ -49,7 +61,7 @@ define(function(require, exports, module) {
 
     queryCypher(cql, function(json) {
       promise.resolve(context.createView({
-        html: cypherHtml,
+        html: cypherHtml.value,
         data: { "result": json },
         options: { allowEval:true },
         css: require('text!neo4j/commands/cypher_result.css'),

@@ -40,7 +40,7 @@ trait BanskyService extends Directives with CypherResultMarshallers {
         }
       } ~
       path("") {
-        getFromResource("WEB-INF/cypher.html")
+        getFromResource("WEB-INF/index.html")
       } ~
       pathPrefix("") {
         getFromResourceDirectory("WEB-INF/")

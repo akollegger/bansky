@@ -44,7 +44,11 @@
       settings = require('gcli/settings');
       settings.getAll('hideIntro')[0].value = true;
       settings.getAll('cypherUrl')[0].value = "http://localhost:5000/cypher"
+      // settings.getAll('cypherPostType')[0].value = "text/plain"
+      // settings.getAll('cypherUrl')[0].value = "http://localhost:5000/console/cypher"
       settings.getAll('cypherPostType')[0].value = "text/plain"
+      settings.getAll('cypherHtml')[0].value = require('text!neo4j/commands/cypher-table.html');
+      // settings.getAll('cypherHtml')[0].value = require('text!neo4j/commands/rabbit-table.html');
       // settings.getAll('cypherUrl')[0].value = "http://localhost:7474/db/data/cypher"
       // settings.getAll('cypherPostType')[0].value = "application/json"
       gcli.createDisplay();
