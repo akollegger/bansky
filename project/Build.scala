@@ -49,7 +49,7 @@ object Dependencies {
     val specs2    = "1.6.1"
     val slf4j     = "1.6.1"
     val logback   = "0.9.29"
-    val neo4j     = "1.8.M03"
+    val neo4j     = "1.8.M06"
   }
 
   object Compile {
